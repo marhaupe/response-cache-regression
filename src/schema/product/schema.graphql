@@ -1,0 +1,39 @@
+type Product @cacheControl(maxAge: 3600000) {
+  id: ID!
+  totalRating: ProductTotalRating
+  userRating(userId: String): ProductUserRating
+}
+
+type ProductUserRating {
+  id: ID!
+  type: ProductRatingType!
+  timestamp: Float!
+}
+
+type ProductTotalRating {
+  id: ID!
+  score: Int!
+  likesCount: Int!
+  dislikesCount: Int!
+}
+
+enum ProductRatingType {
+  LIKE
+  DISLIKE
+}
+
+type Query {
+  product(id: String!): Product
+}
+
+type Mutation {
+  productRate(
+    id: String!
+    rating: ProductRatingType!
+  ): UserProductRatingMutationResult!
+}
+
+type UserProductRatingMutationResult {
+  result: MutationResult!
+  product: Product
+}

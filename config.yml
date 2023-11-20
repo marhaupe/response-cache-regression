@@ -1,0 +1,11 @@
+port: 3000
+host: localhost
+database:
+  name: postgres
+  user: reproduction-user
+  password: example
+caching:
+  enabled: true
+redis:
+  port: 6379
+  host: localhost

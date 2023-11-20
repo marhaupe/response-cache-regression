@@ -1,0 +1,7 @@
+directive @cacheControl(maxAge: Int) on FIELD_DEFINITION | OBJECT
+
+type MutationResult {
+  success: Boolean!
+  message: String
+  code: String
+}

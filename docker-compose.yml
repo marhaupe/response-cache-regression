@@ -1,0 +1,19 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: reproduction-user
+  cache:
+    image: redis
+    restart: always
+    cpus: '0.5'
+    mem_limit: '2gb'
+    ports:
+      - 6379:6379
